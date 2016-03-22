@@ -1,6 +1,5 @@
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Scanner;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -24,6 +23,7 @@ class Dummy1
 			//Get the response status of the Rest API
 			int responsecode = conn.getResponseCode();
 			System.out.println("Response code is: " +responsecode);
+			
 			//Iterating condition to if response code is not 200 then throw a runtime exception
 			//else continue the actual process of getting the JSON data
 			if(responsecode != 200)
@@ -41,6 +41,7 @@ class Dummy1
 				//Close the stream when reading the data has been finished
 				sc.close();
 			}
+			
 			//Parse the JSON data present in the string format
 			JSONParser parse = new JSONParser();
 			//Type caste the parsed json data in json object
