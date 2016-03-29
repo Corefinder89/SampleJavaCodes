@@ -1,0 +1,9 @@
+{
+  "name" : {
+      "first" : "Joe",
+      "last" : "Harlem"
+  },
+  "gender" : "MALE",
+  "verified" : false,
+  "userImage" : "Rm9vYmFYIQ=="
+}
