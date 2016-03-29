@@ -32,7 +32,7 @@ public class Jackson_Driver
 		}
 		
 		//Parse JSON data using Jackson from file
-		File jsonfile = new File("User.json");
+		File jsonfile = new File("//Users/soumyajitbasu/Dummy_Tryouts/src/com/tryouts/jackson/User.json");
 		GetUserInfo info = null;
 		ObjectMapper mapper = new ObjectMapper();
 		
