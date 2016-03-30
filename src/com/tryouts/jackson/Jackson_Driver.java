@@ -21,6 +21,7 @@ public class Jackson_Driver
 			user = mapper.readValue(jsonurl,GetUserInfo.class);
 			
 			System.out.println("Get user data from URL");
+			System.out.println("----------------------");
 			System.out.println("First Name: " + user.getName().getFirst());
 			System.out.println("Last Name: " + user.getName().getLast());
 			System.out.println("Gender: " + user.getGender());
@@ -31,14 +32,17 @@ public class Jackson_Driver
 			e.printStackTrace();
 		}
 		
+		System.out.println("\n");
+		
 		//Parse JSON data using Jackson from file
-		File jsonfile = new File("//Users/soumyajitbasu/Dummy_Tryouts/src/com/tryouts/jackson/User.json");
+		File jsonfile = new File("/Users/soumyajit/Documents/DevOps/Dummy_Tryouts/src/com/tryouts/jackson/User.json");
 		GetUserInfo info = null;
 		ObjectMapper mapper = new ObjectMapper();
 		
 		info = mapper.readValue(jsonfile,GetUserInfo.class);
 		
 		System.out.println("Get JSON data from File");
+		System.out.println("-----------------------");
 		System.out.println("First Name: " + info.getName().getFirst());
 		System.out.println("Last Name: " + info.getName().getLast());
 		System.out.println("Gender: " + info.getGender());
