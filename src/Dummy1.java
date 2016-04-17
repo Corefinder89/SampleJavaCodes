@@ -43,7 +43,7 @@ class Dummy1
 				sc.close();
 			}
 			
-			//Parse the JSON data present in the string format
+			//JSONParser reads the data from string object and break each data into key value pairs
 			JSONParser parse = new JSONParser();
 			//Type caste the parsed json data in json object
 			JSONObject jobj = (JSONObject)parse.parse(inline);
