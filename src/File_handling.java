@@ -1,23 +1,56 @@
 import java.util.*;
 
-class Operations
+class File_operations
+{
+		public static void get_files()
+		{
+			System.out.println("Hello World");
+		}
+
+		public static void add_files()
+		{
+			System.out.println("add a user specified file in the system");
+		}
+
+		public static void delete_files()
+		{
+			System.out.println("delete a user specified file in the system");
+		}
+
+		public static void search_file()
+		{
+			System.out.println("search for a file in the system");
+		}
+
+		public static void navigate_context()
+		{
+			System.out.println("navigate context");
+		}
+
+		public static void exit_application()
+		{
+			System.out.println("close application");
+		}
+}
+
+class Execute extends File_operations
 {
 	public static void file_operations(int user_option)
 	{
 		switch(user_option)
 		{
-			case 1: System.out.println("retrieve all files in the system");
+			case 1: get_files();
 			        break;
-			case 2: System.out.println("add a user specified file in the system");
-				    	break;
-			case 3: System.out.println("delete a user specified file in the system");
+			case 2: add_files();
+				    break;
+			case 3: delete_files();
 			        break;
-			case 4: System.out.println("search for a file in the system");
-							break;
-			case 5: System.out.println("navigate context");
-							break;
-			case 6: System.out.println("close application");
-							break;
+			case 4: search_file();
+					break;
+			case 5: navigate_context();
+					break;
+			case 6: exit_application();
+					break;
 		}
 	}
 
@@ -45,7 +78,7 @@ public class File_handling
 {
 	public static void main(String [] args)
 	{
-		Operations fo = new Operations();
-		fo.user_interface();
+		Execute exe  = new Execute();
+		exe.user_interface();
 	}
 }
