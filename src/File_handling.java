@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Scanner;
 
 class File_operations
 {
@@ -33,8 +33,10 @@ class File_operations
 		}
 }
 
+// Inherit parent class File_operations to call for respective methods
 class Execute extends File_operations
 {
+	// Method definitions
 	public static void file_operations(int user_option)
 	{
 		switch(user_option)
@@ -42,35 +44,43 @@ class Execute extends File_operations
 			case 1: get_files();
 			        break;
 			case 2: add_files();
-				    break;
+				    	break;
 			case 3: delete_files();
 			        break;
 			case 4: search_file();
-					break;
+							break;
 			case 5: navigate_context();
-					break;
+							break;
 			case 6: exit_application();
-					break;
+							break;
+			default: System.out.println("Option not available");
 		}
 	}
-
+	// Generic function to take user input
 	public void user_interface()
 	{
-		System.out.println("User Interface");
-		System.out.println("====================");
-		System.out.println("Enter 1. to retrieve all files in the system");
-		System.out.println("Enter 2. to add a user specified file in the system");
-		System.out.println("Enter 3. to delete a user specified file in the system");
-		System.out.println("Enter 4. to search for a file in the system");
-		System.out.println("Enter 5. to navigate context");
-		System.out.println("Enter 6. to close the application");
+		String exit = "";
+		do
+		{
+			System.out.println("User Interface");
+			System.out.println("====================");
+			System.out.println("Enter 1. to retrieve all files in the system");
+			System.out.println("Enter 2. to add a user specified file in the system");
+			System.out.println("Enter 3. to delete a user specified file in the system");
+			System.out.println("Enter 4. to search for a file in the system");
+			System.out.println("Enter 5. to navigate context");
+			System.out.println("Enter 6. to close the application");
 
-		System.out.print("\nEnter option: ");
-		Scanner sc = new Scanner(System.in);
+			System.out.print("\nEnter option: ");
+			Scanner sc = new Scanner(System.in);
+			int option = sc.nextInt();
 
-		int option = sc.nextInt();
+			file_operations(option);
 
-		file_operations(option);
+			Scanner input = new Scanner(System.in);
+			System.out.print("\nContinue? (y/n): ");
+			exit = input.next();
+		}while(!exit.equals("n"));
 	}
 }
 
