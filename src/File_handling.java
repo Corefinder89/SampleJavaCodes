@@ -2,31 +2,37 @@ import java.util.Scanner;
 
 class File_operations
 {
+		// Get files in ascending order
 		public static void get_files()
 		{
 			System.out.println("Hello World");
 		}
 
+		// Adding files to directory
 		public static void add_files()
 		{
 			System.out.println("add a user specified file in the system");
 		}
 
+		// Deleting files from directory
 		public static void delete_files()
 		{
 			System.out.println("delete a user specified file in the system");
 		}
 
+		// Search for a file in the directory
 		public static void search_file()
 		{
 			System.out.println("search for a file in the system");
 		}
 
+		// Some method
 		public static void navigate_context()
 		{
 			System.out.println("navigate context");
 		}
 
+		// Exit application
 		public static void exit_application()
 		{
 			System.out.println("close application");
