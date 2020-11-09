@@ -66,6 +66,8 @@ class Execute extends File_operations
 	public void user_interface()
 	{
 		String exit = "";
+		Scanner sc = new Scanner(System.in);
+		Scanner input = new Scanner(System.in);
 		do
 		{
 			System.out.println("User Interface");
@@ -78,15 +80,16 @@ class Execute extends File_operations
 			System.out.println("Enter 6. to close the application");
 
 			System.out.print("\nEnter option: ");
-			Scanner sc = new Scanner(System.in);
+
 			int option = sc.nextInt();
 
 			file_operations(option);
 
-			Scanner input = new Scanner(System.in);
 			System.out.print("\nContinue? (y/n): ");
 			exit = input.next();
 		}while(!exit.equals("n"));
+		sc.close();
+		input.close();
 	}
 }
 
