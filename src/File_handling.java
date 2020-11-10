@@ -1,4 +1,7 @@
 import java.util.Scanner;
+import java.io.IOException;
+import java.io.File;
+import java.lang.System;
 
 class File_operations
 {
@@ -11,13 +14,49 @@ class File_operations
 		// Adding files to directory
 		public static void add_files()
 		{
-			System.out.println("add a user specified file in the system");
+			try
+			{
+				Scanner file_name = new Scanner(System.in);
+				System.out.print("\nEnter file path: ");
+				String file_path = file_name.next();
+
+				File file = new File(file_path);
+
+				if(file.createNewFile())
+				{
+					System.out.println("Created file "+file.getName());
+				}
+				else
+				{
+					System.out.println("File already exists");
+				}
+				file_name.close();
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}
 		}
 
 		// Deleting files from directory
 		public static void delete_files()
 		{
-			System.out.println("delete a user specified file in the system");
+			Scanner file_name = new Scanner(System.in);
+			System.out.print("\nEnter file path that needs to be deleted: ");
+			String file_path = file_name.next();
+
+			File file = new File(file_path);
+
+			if(file.delete())
+			{
+				System.out.println("Deleted file: "+file.getName());
+			}
+			else
+			{
+				System.out.println("Failed to delete the file.");
+			}
+
+			file_name.close();
 		}
 
 		// Search for a file in the directory
@@ -35,7 +74,8 @@ class File_operations
 		// Exit application
 		public static void exit_application()
 		{
-			System.out.println("close application");
+			System.out.println("Exiting application");
+			System.exit(0);
 		}
 }
 
@@ -50,16 +90,16 @@ class Execute extends File_operations
 			case 1: get_files();
 			        break;
 			case 2: add_files();
-				    	break;
+				    break;
 			case 3: delete_files();
 			        break;
 			case 4: search_file();
-							break;
+					break;
 			case 5: navigate_context();
-							break;
+					break;
 			case 6: exit_application();
-							break;
-			default: System.out.println("Option not available");
+					break;
+			default: System.out.println("Option not available in th system");
 		}
 	}
 	// Generic function to take user input
