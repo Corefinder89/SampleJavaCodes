@@ -2,6 +2,8 @@ import java.util.Scanner;
 import java.io.IOException;
 import java.io.File;
 import java.lang.System;
+import java.util.Arrays;
+import java.util.Comparator;
 
 class File_operations
 {
@@ -9,9 +11,38 @@ class File_operations
 		static String file_path = "";
 
 		// Get files in ascending order
-		public static void get_files()
+		public static void get_files(File dir)
 		{
-			System.out.println("Hello World");
+				try
+				{
+					File[] files = dir.listFiles();
+					for (File file : files)
+					{
+						if (file.isDirectory())
+							get_files(file);
+					}
+
+					Arrays.sort(files, new Comparator<File>(){
+						public int compare(File f1, File f2)
+						{
+							if (((File) f1).length() < ((File) f2).length())
+		            return -1;
+		          else if (((File) f1).length() > ((File) f2).length())
+		            return 1;
+		          else
+		            return 0;
+						}
+					});
+
+		      for(File file:files)
+		      {
+		        System.out.println(file.getCanonicalPath());
+		      }
+				}
+				catch (IOException e)
+				{
+					e.printStackTrace();
+				}
 		}
 
 		// Adding files to directory
@@ -102,7 +133,8 @@ class Execute extends File_operations
 	{
 		switch(user_option)
 		{
-			case 1: get_files();
+			case 1: File dir = new File(dir_path);
+							get_files(dir);
 			        break;
 			case 2: add_files();
 				    	break;
