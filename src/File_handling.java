@@ -23,7 +23,6 @@ class File_operations
 				System.out.print("\nEnter file name: ");
 				String file_obj = sc.nextLine();
 				file_path = dir_path + file_obj;
-
 				File file = new File(file_path);
 
 				if(file.createNewFile())
@@ -43,19 +42,18 @@ class File_operations
 			Scanner sc = new Scanner(System.in);
 			System.out.print("\nEnter file name: ");
 			String file_obj = sc.nextLine();
+
 			file_path = dir_path + file_obj;
 
 			File file = new File(file_path);
 
-			if(file.exists())
+			if(file.getName().equalsIgnoreCase(file_obj))
 			{
 				if(file.delete())
 					System.out.println("Deleted file: "+file.getName());
 				else
 					System.out.println("Failed to delete the file.");
 			}
-			else
-				System.out.println(file_obj + " does not exist");
 		}
 
 		// Search for a file in the directory
@@ -64,10 +62,28 @@ class File_operations
 			Scanner sc = new Scanner(System.in);
 			System.out.print("\nEnter file name: ");
 			String file_obj = sc.nextLine();
-			file_path = dir_path + file_obj;
+			file_path = dir_path;
 
 			File file = new File(file_path);
-			
+
+			File [] list = file.listFiles();
+
+			if (list!=null)
+			{
+				for (File fil: list)
+				{
+					if (file.exists())
+					{
+						if (file_obj.equalsIgnoreCase(fil.getName()))
+							System.out.println(file_obj + " is present in " + fil.getParentFile());
+					}
+					else
+					{
+							System.out.println(file_obj + " is not present");
+							break;
+					}
+				}
+			}
 		}
 
 		// Exit application
