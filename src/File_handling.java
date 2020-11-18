@@ -5,6 +5,9 @@ import java.lang.System;
 
 class File_operations
 {
+		static String dir_path = "/Users/synup/Documents/gitRepositories/File_handling/test/";
+		static String file_path = "";
+
 		// Get files in ascending order
 		public static void get_files()
 		{
@@ -16,21 +19,17 @@ class File_operations
 		{
 			try
 			{
-				Scanner file_name = new Scanner(System.in);
-				System.out.print("\nEnter file path: ");
-				String file_path = file_name.next();
+				Scanner sc = new Scanner(System.in);
+				System.out.print("\nEnter file name: ");
+				String file_obj = sc.nextLine();
+				file_path = dir_path + file_obj;
 
 				File file = new File(file_path);
 
 				if(file.createNewFile())
-				{
 					System.out.println("Created file "+file.getName());
-				}
 				else
-				{
 					System.out.println("File already exists");
-				}
-				file_name.close();
 			}
 			catch (IOException e)
 			{
@@ -41,34 +40,34 @@ class File_operations
 		// Deleting files from directory
 		public static void delete_files()
 		{
-			Scanner file_name = new Scanner(System.in);
-			System.out.print("\nEnter file path that needs to be deleted: ");
-			String file_path = file_name.next();
+			Scanner sc = new Scanner(System.in);
+			System.out.print("\nEnter file name: ");
+			String file_obj = sc.nextLine();
+			file_path = dir_path + file_obj;
 
 			File file = new File(file_path);
 
-			if(file.delete())
+			if(file.exists())
 			{
-				System.out.println("Deleted file: "+file.getName());
+				if(file.delete())
+					System.out.println("Deleted file: "+file.getName());
+				else
+					System.out.println("Failed to delete the file.");
 			}
 			else
-			{
-				System.out.println("Failed to delete the file.");
-			}
-
-			file_name.close();
+				System.out.println(file_obj + " does not exist");
 		}
 
 		// Search for a file in the directory
 		public static void search_file()
 		{
-			System.out.println("search for a file in the system");
-		}
+			Scanner sc = new Scanner(System.in);
+			System.out.print("\nEnter file name: ");
+			String file_obj = sc.nextLine();
+			file_path = dir_path + file_obj;
 
-		// Some method
-		public static void navigate_context()
-		{
-			System.out.println("navigate context");
+			File file = new File(file_path);
+			
 		}
 
 		// Exit application
@@ -90,34 +89,34 @@ class Execute extends File_operations
 			case 1: get_files();
 			        break;
 			case 2: add_files();
-				    break;
+				    	break;
 			case 3: delete_files();
 			        break;
 			case 4: search_file();
-					break;
-			case 5: navigate_context();
-					break;
-			case 6: exit_application();
-					break;
-			default: System.out.println("Option not available in th system");
+							break;
+			case 5: exit_application();
+							break;
+			default: System.out.println("Option not available");
 		}
 	}
 	// Generic function to take user input
 	public void user_interface()
 	{
-		String exit = "";
+		String context = "";
 		Scanner sc = new Scanner(System.in);
 		Scanner input = new Scanner(System.in);
 		do
 		{
-			System.out.println("User Interface");
+			System.out.println("\nApplication: File Handler");
+			System.out.println("Developer: Soumi Basu");
+			System.out.println("===============================================");
+			System.out.println("\nUser Interface");
 			System.out.println("====================");
 			System.out.println("Enter 1. to retrieve all files in the system");
 			System.out.println("Enter 2. to add a user specified file in the system");
 			System.out.println("Enter 3. to delete a user specified file in the system");
 			System.out.println("Enter 4. to search for a file in the system");
-			System.out.println("Enter 5. to navigate context");
-			System.out.println("Enter 6. to close the application");
+			System.out.println("Enter 5. to close the application");
 
 			System.out.print("\nEnter option: ");
 
@@ -126,8 +125,8 @@ class Execute extends File_operations
 			file_operations(option);
 
 			System.out.print("\nContinue? (y/n): ");
-			exit = input.next();
-		}while(!exit.equals("n"));
+			context = input.next();
+		}while(!context.equals("n"));
 		sc.close();
 		input.close();
 	}
