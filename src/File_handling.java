@@ -25,18 +25,20 @@ class File_operations
 					Arrays.sort(files, new Comparator<File>(){
 						public int compare(File f1, File f2)
 						{
-							if (((File) f1).length() < ((File) f2).length())
-		            return -1;
-		          else if (((File) f1).length() > ((File) f2).length())
-		            return 1;
-		          else
-		            return 0;
+							long f1Size = f1.length();
+							long f2Size = f2.length();
+							if (f1Size == f2Size)
+								return 0;
+							else
+								return Long.compare(f1Size, f2Size);
 						}
 					});
 
+					System.out.printf("\n%-100s %s", "File_path", "Size");
+					System.out.println("\n====================================================================================================================");
 		      for(File file:files)
 		      {
-		        System.out.println(file.getCanonicalPath());
+		        System.out.printf("%-100s %s\n", file.getCanonicalPath(), file.length() + " bytes");
 		      }
 				}
 				catch (IOException e)
