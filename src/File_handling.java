@@ -99,24 +99,26 @@ class File_operations
 
 			File file = new File(file_path);
 
-			File [] list = file.listFiles();
+			String [] list = file.list();
+			int flag = 0;
 
 			if (list!=null)
 			{
-				for (File fil: list)
+				for (int i=0; i < list.length; i++)
 				{
-					if (file.exists())
+					String filename = list[i];
+					if (filename.equalsIgnoreCase(file_obj))
 					{
-						if (file_obj.equalsIgnoreCase(fil.getName()))
-							System.out.println(file_obj + " is present in " + fil.getParentFile());
-					}
-					else
-					{
-							System.out.println(file_obj + " is not present");
-							break;
+						System.out.println(filename + " is found in the directory");
+						flag = 1;
 					}
 				}
+				if(flag == 0)
+					System.out.println("File not found in the directory");
 			}
+
+			else
+				System.out.println("Directory is empty");
 		}
 
 		// Exit application
@@ -136,16 +138,16 @@ class Execute extends File_operations
 		switch(user_option)
 		{
 			case 1: File dir = new File(dir_path);
-							get_files(dir);
+					get_files(dir);
 			        break;
 			case 2: add_files();
-				    	break;
+				    break;
 			case 3: delete_files();
 			        break;
 			case 4: search_file();
-							break;
+					break;
 			case 5: exit_application();
-							break;
+					break;
 			default: System.out.println("Option not available");
 		}
 	}
