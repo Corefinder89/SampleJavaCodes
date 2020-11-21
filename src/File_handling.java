@@ -1,7 +1,6 @@
 import java.util.Scanner;
 import java.io.IOException;
 import java.io.File;
-import java.lang.System;
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -25,12 +24,7 @@ class File_operations
 					Arrays.sort(files, new Comparator<File>(){
 						public int compare(File f1, File f2)
 						{
-							long f1Size = f1.length();
-							long f2Size = f2.length();
-							if (f1Size == f2Size)
-								return 0;
-							else
-								return Long.compare(f1Size, f2Size);
+							return ((File) f1).getName().compareTo(((File) f2).getName());
 						}
 					});
 
@@ -121,12 +115,6 @@ class File_operations
 				System.out.println("Directory is empty");
 		}
 
-		// Exit application
-		public static void exit_application()
-		{
-			System.out.println("Exiting application");
-			System.exit(0);
-		}
 }
 
 // Inherit parent class File_operations to call for respective methods
@@ -145,8 +133,6 @@ class Execute extends File_operations
 			case 3: delete_files();
 			        break;
 			case 4: search_file();
-					break;
-			case 5: exit_application();
 					break;
 			default: System.out.println("Option not available");
 		}
@@ -168,7 +154,6 @@ class Execute extends File_operations
 			System.out.println("Enter 2. to add a user specified file in the system");
 			System.out.println("Enter 3. to delete a user specified file in the system");
 			System.out.println("Enter 4. to search for a file in the system");
-			System.out.println("Enter 5. to close the application");
 
 			System.out.print("\nEnter option: ");
 
